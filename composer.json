@@ -1,0 +1,23 @@
+{
+	"name": "topvisor/tinkoff-sdk-php",
+	"description": "SDK для Tinkoff Api для Topvisor",
+	"keywords": ["PHP","Tinkoff"],
+	"license": "MIT",
+	"type": "library",
+	"authors": [
+		{
+			"name": "decaseal",
+			"email": "decaseal@gmail.com"
+		}
+	],
+	"require": {
+		"php": "^7.4",
+		"ext-date": "*",
+		"ext-mbstring": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Topvisor\\TinkoffSdk\\": "src/"
+		}
+	}
+}
