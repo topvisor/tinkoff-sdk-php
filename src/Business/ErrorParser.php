@@ -22,10 +22,11 @@ class ErrorParser {
 		$data = json_decode($resp->body, true);
 
 		$message = $data['errorMessage'] ?? "http: ($resp->code)";
-		$code = $data['errorCode'] ?? $resp->code;
 
-		$error = new Error($message, $code);
-		$error->statusCode = $resp->code;
+		if (isset($data['errorCode']))
+			$message = "$data[errorCode]: $message";
+
+		$error = new Error($message, $resp->code);
 		$error->xRequestId = $resp->headers->get(Service::HEADER_NAME_REQUEST_ID)[0] ?? NULL;
 		$error->id = $data['errorId'] ?? NULL;
 		$error->details = $data['errorDetails'] ?? NULL;
