@@ -13,7 +13,9 @@
 	"require": {
 		"php": "^7.4",
 		"ext-date": "*",
-		"ext-mbstring": "*"
+		"ext-mbstring": "*",
+		"ext-curl": "*",
+		"ext-openssl": "*"
 	},
 	"autoload": {
 		"psr-4": {

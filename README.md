@@ -10,7 +10,7 @@ composer.json
 ```json
 {
     "require": {
-        "topvisor/tinkoff-sdk-php": "^0.1"
+        "topvisor/tinkoff-sdk-php": "^0.2"
     }
 }
 ```
