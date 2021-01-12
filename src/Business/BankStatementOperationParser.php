@@ -34,9 +34,9 @@ class BankStatementOperationParser implements Parser {
 
 		$operation->id = $raw->id ?? NULL;
 		$operation->amount = $raw->amount ?? NULL;
-		$operation->date = new \DateTime($raw->date);
-		$operation->drawDate = new \DateTime($raw->drawDate);
-		$operation->chargeDate = new \DateTime($raw->chargeDate);
+		$operation->date = $raw->date ?? NULL;
+		$operation->drawDate = $raw->drawDate ?? NULL;
+		$operation->chargeDate = $raw->chargeDate ?? NULL;
 		$operation->operationType = $raw->operationType ?? NULL;
 		$operation->paymentPurpose = $raw->paymentPurpose ?? NULL;
 		$operation->creatorStatus = $raw->creatorStatus ?? NULL;

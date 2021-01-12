@@ -6,9 +6,9 @@ class BankStatementOperation {
 
 	public string $id;
 	public int $amount;
-	public \DateTime $date;
-	public \DateTime $drawDate;
-	public \DateTime $chargeDate;
+	public string $date;
+	public string $drawDate;
+	public string $chargeDate;
 	public string $operationType;
 	public string $paymentPurpose;
 	public string $creatorStatus;
