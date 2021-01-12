@@ -33,10 +33,10 @@ class BankStatementService {
 		$queryData = ['accountNumber' => $accountNumber];
 
 		if ($from)
-			$queryData['from'] = $from->format('Y-m-d');
+			$queryData['from'] = $from->format('Y-m-d+H:i:s');
 
 		if ($till)
-			$queryData['till'] = $till->format('Y-m-d');
+			$queryData['till'] = $till->format('Y-m-d+H:i:s');
 
 		$url = self::GET_URL . '?' . http_build_query($queryData);
 
