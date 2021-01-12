@@ -10,7 +10,7 @@ composer.json
 ```json
 {
     "require": {
-        "topvisor/xlsx-creator": "^1.0"
+        "topvisor/tinkoff-sdk-php": "^0.1"
     }
 }
 ```
