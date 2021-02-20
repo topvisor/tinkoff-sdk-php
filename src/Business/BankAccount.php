@@ -10,7 +10,7 @@ class BankAccount {
 	public string $bankBik;
 	public string $accountType;
 	public Balance $balance;
-	public ?TransitAccount $transitAccount;
+	public ?TransitAccount $transitAccount = NULL;
 
 	public function __destruct() {
 		unset($this->balance);

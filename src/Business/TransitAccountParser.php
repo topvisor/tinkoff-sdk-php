@@ -19,8 +19,10 @@ class TransitAccountParser implements Parser {
 
 	public function parse($raw) {
 		$transitAccount = new TransitAccount();
-		$transitAccount->accountNumber = $raw->accountNumber ?? NULL;
-		$transitAccount->balance = $raw->balance ?? NULL;
+		if (isset($raw->accountNumber))
+			$transitAccount->accountNumber = $raw->accountNumber;
+		if (isset($raw->balance))
+			$transitAccount->balance = $raw->balance;
 
 		return $transitAccount;
 	}

@@ -19,12 +19,18 @@ class BankAccountParser implements Parser {
 
 	public function parse($raw) {
 		$bankAccount = new BankAccount();
-		$bankAccount->accountNumber = $raw->accountNumber ?? NULL;
-		$bankAccount->name = $raw->name ?? NULL;
-		$bankAccount->currency = $raw->currency ?? NULL;
-		$bankAccount->bankBik = $raw->bankBik ?? NULL;
-		$bankAccount->accountType = $raw->accountType ?? NULL;
-		$bankAccount->balance = BalanceParser::instance()->parse($raw->balance ?? NULL);
+		if (isset($raw->accountNumber))
+			$bankAccount->accountNumber = $raw->accountNumber;
+		if (isset($raw->name))
+			$bankAccount->name = $raw->name;
+		if (isset($raw->currency))
+			$bankAccount->currency = $raw->currency;
+		if (isset($raw->bankBik))
+			$bankAccount->bankBik = $raw->bankBik;
+		if (isset($raw->accountType))
+			$bankAccount->accountType = $raw->accountType;
+		if (isset($raw->balance))
+			$bankAccount->balance = $raw->balance;
 
 		if (isset($raw->transitAccount))
 			$bankAccount->transitAccount = TransitAccountParser::instance()->parse($raw->transitAccount);

@@ -13,8 +13,8 @@ class Error extends \Exception {
 	}
 
 	public int $statusCode;
-	public ?string $xRequestId;
-	public ?string $id;
-	public ?array $details;
+	public ?string $xRequestId = NULL;
+	public ?string $id = NULL;
+	public ?array $details = NULL;
 
 }

@@ -9,6 +9,6 @@ class BankStatement {
 	public int $income;
 	public int $outcome;
 	public int $saldoOut;
-	public ?array $operation;
+	public ?array $operation = NULL;
 
 }

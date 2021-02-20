@@ -14,30 +14,30 @@ class BankStatementOperation {
 	public string $creatorStatus;
 
 	public string $payerName;
-	public ?string $payerInn;
-	public ?string $payerAccount;
-	public ?string $payerCorrAccount;
+	public ?string $payerInn = NULL;
+	public ?string $payerAccount = NULL;
+	public ?string $payerCorrAccount = NULL;
 	public string $payerBic;
 	public string $payerBank;
-	public ?string $payerKpp;
+	public ?string $payerKpp = NULL;
 
 	public string $recipient;
-	public ?string $recipientInn;
+	public ?string $recipientInn = NULL;
 	public string $recipientAccount;
-	public ?string $recipientCorrAccount;
+	public ?string $recipientCorrAccount = NULL;
 	public string $recipientBic;
 	public string $recipientBank;
-	public ?string $recipientKpp;
+	public ?string $recipientKpp = NULL;
 
-	public ?string $paymentType;
-	public ?string $uin;
-	public ?string $kbk;
-	public ?string $oktmo;
-	public ?string $taxEvidence;
-	public ?string $taxPeriod;
-	public ?string $taxDocNumber;
-	public ?string $taxDocDate;
-	public ?string $taxType;
-	public ?string $executionOrder;
+	public ?string $paymentType = NULL;
+	public ?string $uin = NULL;
+	public ?string $kbk = NULL;
+	public ?string $oktmo = NULL;
+	public ?string $taxEvidence = NULL;
+	public ?string $taxPeriod = NULL;
+	public ?string $taxDocNumber = NULL;
+	public ?string $taxDocDate = NULL;
+	public ?string $taxType = NULL;
+	public ?string $executionOrder = NULL;
 
 }

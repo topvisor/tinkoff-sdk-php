@@ -19,10 +19,15 @@ class BalanceParser implements Parser {
 
 	public function parse($raw) {
 		$balance = new Balance();
-		$balance->otb = $raw->otb ?? NULL;
-		$balance->authorized = $raw->authorized ?? NULL;
-		$balance->pendingPayments = $raw->pendingPayments ?? NULL;
-		$balance->pendingRequisitions = $raw->pendingRequisitions ?? NULL;
+
+		if (isset($raw->otb))
+			$balance->otb = $raw->otb;
+		if (isset($raw->authorized))
+			$balance->authorized = $raw->authorized;
+		if (isset($raw->pendingPayments))
+			$balance->pendingPayments = $raw->pendingPayments;
+		if (isset($raw->pendingRequisitions))
+			$balance->pendingRequisitions = $raw->pendingRequisitions;
 
 		return $balance;
 	}

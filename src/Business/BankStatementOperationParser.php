@@ -32,48 +32,56 @@ class BankStatementOperationParser implements Parser {
 		if (!isset($raw->date) || !isset($raw->drawDate) || !isset($raw->chargeDate))
 			throw new \Exception('wrong bank statement operation: ' . json_encode($raw));
 
-		$operation->id = $raw->id ?? NULL;
-		$operation->amount = $raw->amount ?? NULL;
-		$operation->date = $raw->date ?? NULL;
-		$operation->drawDate = $raw->drawDate ?? NULL;
-		$operation->chargeDate = $raw->chargeDate ?? NULL;
-		$operation->operationType = $raw->operationType ?? NULL;
-		$operation->paymentPurpose = $raw->paymentPurpose ?? NULL;
-		$operation->creatorStatus = $raw->creatorStatus ?? NULL;
+		if (isset($raw->id))
+			$operation->id = $raw->id;
+		if (isset($raw->amount))
+			$operation->amount = $raw->amount;
+		if (isset($raw->date))
+			$operation->date = $raw->date;
+		if (isset($raw->drawDate))
+			$operation->drawDate = $raw->drawDate;
+		if (isset($raw->chargeDate))
+			$operation->chargeDate = $raw->chargeDate;
+		if (isset($raw->operationType))
+			$operation->operationType = $raw->operationType;
+		if (isset($raw->paymentPurpose))
+			$operation->paymentPurpose = $raw->paymentPurpose;
+		if (isset($raw->creatorStatus))
+			$operation->creatorStatus = $raw->creatorStatus;
 	}
 
 	private function parsePayer(BankStatementOperation $operation, \stdClass $raw): void {
-		$operation->payerName = $raw->payerName ?? NULL;
-		$operation->payerBic = $raw->payerBic ?? NULL;
-		$operation->payerBank = $raw->payerBank ?? NULL;
+		$operation->payerInn = $raw->payerInn ?? NULL;
+		$operation->payerAccount = $raw->payerAccount ?? NULL;
+		$operation->payerCorrAccount = $raw->payerCorrAccount ?? NULL;
+		$operation->payerKpp = $raw->payerKpp ?? NULL;
 
-		if (isset($raw->payerInn))
-			$operation->payerInn = $raw->payerInn;
+		if (isset($raw->payerName))
+			$operation->payerName = $raw->payerName;
 
-		if (isset($raw->payerAccount))
-			$operation->payerAccount = $raw->payerAccount;
+		if (isset($raw->payerBic))
+			$operation->payerBic = $raw->payerBic;
 
-		if (isset($raw->payerCorrAccount))
-			$operation->payerCorrAccount = $raw->payerCorrAccount;
-
-		if (isset($raw->payerKpp))
-			$operation->payerKpp = $raw->payerKpp;
+		if (isset($raw->payerBank))
+			$operation->payerBank = $raw->payerBank;
 	}
 
 	private function parseRecipient(BankStatementOperation $operation, \stdClass $raw): void {
-		$operation->recipient = $raw->recipient ?? NULL;
-		$operation->recipientAccount = $raw->recipientAccount ?? NULL;
-		$operation->recipientBic = $raw->recipientBic ?? NULL;
-		$operation->recipientBank = $raw->recipientBank ?? NULL;
+		$operation->recipientInn = $raw->recipientInn ?? NULL;
+		$operation->recipientCorrAccount = $raw->recipientCorrAccount ?? NULL;
+		$operation->recipientKpp = $raw->recipientKpp ?? NULL;
 
-		if (isset($raw->recipientInn))
-			$operation->recipientInn = $raw->recipientInn;
+		if (isset($raw->recipient))
+			$operation->recipient = $raw->recipient;
 
-		if (isset($raw->recipientCorrAccount))
-			$operation->recipientCorrAccount = $raw->recipientCorrAccount;
+		if (isset($raw->recipientAccount))
+			$operation->recipientAccount = $raw->recipientAccount;
 
-		if (isset($raw->recipientKpp))
-			$operation->recipientKpp = $raw->recipientKpp;
+		if (isset($raw->recipientBic))
+			$operation->recipientBic = $raw->recipientBic;
+
+		if (isset($raw->recipientBank))
+			$operation->recipientBank = $raw->recipientBank;
 	}
 
 	private function parseAdditional(BankStatementOperation $operation, \stdClass $raw): void {
