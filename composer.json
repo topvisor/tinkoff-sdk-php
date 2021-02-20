@@ -3,7 +3,7 @@
 	"description": "SDK для Tinkoff Api для Topvisor",
 	"keywords": ["PHP","Tinkoff"],
 	"license": "MIT",
-	"type": "library",
+	"type": "libraryBankAccountParser",
 	"authors": [
 		{
 			"name": "decaseal",

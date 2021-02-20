@@ -30,7 +30,7 @@ class BankAccountParser implements Parser {
 		if (isset($raw->accountType))
 			$bankAccount->accountType = $raw->accountType;
 		if (isset($raw->balance))
-			$bankAccount->balance = $raw->balance;
+			$bankAccount->balance = BalanceParser::instance()->parse($raw->balance);
 
 		if (isset($raw->transitAccount))
 			$bankAccount->transitAccount = TransitAccountParser::instance()->parse($raw->transitAccount);
