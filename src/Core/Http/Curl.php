@@ -43,7 +43,9 @@ class Curl implements Client {
 		if ($errorCode = curl_errno($this->handle))
 			throw new \Exception("curl: ($errorCode) " . curl_error($this->handle), $errorCode);
 
-		list ($headersRaw, $body) = explode("\r\n\r\n", $respRaw, 2);
+		$respRaw = explode("\r\n\r\n", $respRaw);
+		$body = array_pop($respRaw)??'';
+		$headersRaw = array_pop($respRaw)??'';
 
 		$resp = new Response();
 		$resp->code = (int) curl_getinfo($this->handle, CURLINFO_RESPONSE_CODE);
