@@ -35,9 +35,6 @@ class InvoiceService {
 		$req->method = self::ADD_METHOD;
 		$req->body = json_encode($invoice);
 
-		var_dump($req->body);
-		exit();
-
 		$resp = $this->service->send($req, $http);
 		$parser = new ParsersChain(JsonParser::instance(), InvoicePdfParser::instance());
 
