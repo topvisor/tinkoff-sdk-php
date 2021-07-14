@@ -8,7 +8,7 @@ class AuthToken {
 	public ?int $expires;
 	public ?string $refreshToken;
 
-	public function __construct(string $accessToken, ?int $expires, ?string $refreshToken = NULL){
+	public function __construct(string $accessToken, ?int $expires = NULL, ?string $refreshToken = NULL){
 		$this->accessToken = $accessToken;
 		$this->expires = $expires;
 		$this->refreshToken = $refreshToken;
