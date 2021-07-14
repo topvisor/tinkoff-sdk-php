@@ -10,7 +10,7 @@ composer.json
 ```json
 {
     "require": {
-        "topvisor/tinkoff-sdk-php": "~0.12"
+        "topvisor/tinkoff-sdk-php": "~0.13"
     }
 }
 ```
@@ -33,6 +33,7 @@ $session = new Session($authToken); // используется для даль�
 ## Методы
 
 * [Tinkoff Business OpenApi](#tinkoff-business-openapi)
+    * [Выставить счет](#выставить-счет)
     * [Получить счета](#получить-счета)
     * [Получить выписку по счету](#получить-выписку-по-счету)
 
@@ -59,6 +60,35 @@ try {
         // ...
     }
 } 
+```
+
+#### Выставить счет
+
+```php
+use Topvisor\TinkoffSdk\Business\Invoice;
+use Topvisor\TinkoffSdk\Business\InvoicePayer;
+use Topvisor\TinkoffSdk\Business\InvoiceItem;
+use Topvisor\TinkoffSdk\Business\InvoiceService;
+
+$payer = new InvoicePayer();
+$payer->inn = '730990470834';
+
+$item = new InvoiceItem();
+$item->name = 'Test';
+$item->price = 10;
+$item->unit = ' ';
+$item->vat = 'None';
+$item->amount = 1;
+
+$invoice = new Invoice();
+$invoice->invoiceNumber = '12345';
+$invoice->payer = $payer;
+$invoice->items = [$item];
+
+$invoiceService = new InvoiceService($session);
+$invoicePdf = $invoiceService->add($invoice);
+
+var_dump($invoicePdf);
 ```
 
 #### Получить счета
