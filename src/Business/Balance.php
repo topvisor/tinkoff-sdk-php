@@ -4,9 +4,9 @@ namespace Topvisor\TinkoffSdk\Business;
 
 class Balance {
 
-	public int $otb;
-	public int $authorized;
-	public int $pendingPayments;
-	public int $pendingRequisitions;
+	public float $otb;
+	public float $authorized;
+	public float $pendingPayments;
+	public float $pendingRequisitions;
 
 }
