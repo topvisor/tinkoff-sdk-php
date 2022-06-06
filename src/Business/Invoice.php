@@ -18,7 +18,7 @@ class Invoice implements \JsonSerializable {
 		unset($this->contacts);
 	}
 
-	public function jsonSerialize() {
+	public function jsonSerialize(): mixed {
 		$obj = new \stdClass();
 		$obj->invoiceNumber = $this->invoiceNumber;
 

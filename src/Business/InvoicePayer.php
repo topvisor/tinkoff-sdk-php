@@ -8,7 +8,7 @@ class InvoicePayer implements \JsonSerializable {
 	public ?string $inn;
 	public ?string $kpp;
 
-	public function jsonSerialize() {
+	public function jsonSerialize(): mixed {
 		$obj = new \stdClass();
 
 		if(!is_null($this->name ?? NULL))
