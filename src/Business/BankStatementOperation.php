@@ -5,6 +5,7 @@ namespace Topvisor\TinkoffSdk\Business;
 class BankStatementOperation {
 
 	public string $id;
+	public string $operationId;
 	public float $amount;
 	public string $date;
 	public string $drawDate;
