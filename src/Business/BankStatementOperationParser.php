@@ -32,8 +32,10 @@ class BankStatementOperationParser implements Parser {
 		if (!isset($raw->date) || !isset($raw->drawDate) || !isset($raw->chargeDate))
 			throw new \Exception('wrong bank statement operation: ' . json_encode($raw));
 
-		if (isset($raw->id))
-			$operation->id = $raw->id;
+        if (isset($raw->id))
+            $operation->id = $raw->id;
+        if (isset($raw->operationId))
+            $operation->operationId = $raw->operationId;
 		if (isset($raw->amount))
 			$operation->amount = $raw->amount;
 		if (isset($raw->date))
