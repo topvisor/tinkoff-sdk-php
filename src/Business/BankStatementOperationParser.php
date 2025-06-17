@@ -83,7 +83,6 @@ class BankStatementOperationParser implements Parser {
 	private function parsePayer(BankStatementOperation $operation, \stdClass $raw): void {
 		$operation->payer = new \stdClass();
 		$operation->payer->inn = null;
-		$operation->payer->kpp = null;
 
 		if (isset($raw->payer)) {
 			if (isset($raw->payer->acct)) {
@@ -114,6 +113,7 @@ class BankStatementOperationParser implements Parser {
 
 	private function parseReceiver(BankStatementOperation $operation, \stdClass $raw): void {
 		$operation->receiver = new \stdClass();
+		$operation->receiver->inn = null;
 
 		// Handle receiver object if it exists in raw data
 		if (isset($raw->receiver)) {
@@ -164,11 +164,14 @@ class BankStatementOperationParser implements Parser {
 
 		if (isset($raw->counterParty)) {
 			$operation->counterParty = new \stdClass();
+			$operation->counterParty->inn = null;
 
 			if (isset($raw->counterParty->account))
 				$operation->counterParty->account = $raw->counterParty->account;
-			$operation->counterParty->inn = $raw->counterParty->inn ?? null;
-			$operation->counterParty->kpp = $raw->counterParty->kpp ?? null;
+			if (isset($raw->counterParty->inn))
+				$operation->counterParty->inn = $raw->counterParty->inn;
+			if (isset($raw->counterParty->kpp))
+				$operation->counterParty->kpp = $raw->counterParty->kpp;
 			if (isset($raw->counterParty->name))
 				$operation->counterParty->name = $raw->counterParty->name;
 			if (isset($raw->counterParty->bankName))
@@ -213,7 +216,7 @@ class BankStatementOperationParser implements Parser {
 				$operation->tax->nalType = $raw->tax->nalType;
 			if (isset($raw->tax->docNumber))
 				$operation->tax->docNumber = $raw->tax->docNumber;
-			if (isset($raw->tax->docDate))
+			if (isset($raw->tax->docDate) && $raw->tax->docDate)
 				$operation->tax->docDate = new \DateTime($raw->tax->docDate);
 			if (isset($raw->tax->uin))
 				$operation->tax->uin = $raw->tax->uin;
