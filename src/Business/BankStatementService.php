@@ -11,7 +11,7 @@ use Topvisor\TinkoffSdk\Id\Session;
 
 class BankStatementService {
 
-	private const URL = Service::ENDPOINT_BUSINESS . '/api/v1/bank-statement';
+	private const URL = Service::ENDPOINT_BUSINESS . '/api/v1/statement';
 
 	private const GET_URL = self::URL;
 	private const GET_METHOD = 'GET';
@@ -29,14 +29,18 @@ class BankStatementService {
 		unset($this->service);
 	}
 
-	public function get(string $accountNumber, ?\DateTime $from = NULL, ?\DateTime $till = NULL, ?Client $http = NULL): BankStatement {
-		$queryData = ['accountNumber' => $accountNumber];
+	public function get(string $accountNumber, ?\DateTime $from = null, ?\DateTime $to = null, ?Client $http = null): BankStatement {
+		$queryData = [
+			'accountNumber' => $accountNumber,
+			'limit' => 5000,
+		];
 
 		if ($from)
-			$queryData['from'] = $from->format('Y-m-d');
+			$queryData['from'] = $from->format('Y-m-d\TH:i:s\Z');
 
-		if ($till)
-			$queryData['till'] = $till->format('Y-m-d');
+		if ($to) {
+			$queryData['to'] = $to->format('Y-m-d\TH:i:s\Z');
+		}
 
 		$url = self::GET_URL . '?' . http_build_query($queryData);
 
@@ -49,6 +53,5 @@ class BankStatementService {
 
 		return $parser->parse($resp->body);
 	}
-
 
 }

@@ -2,13 +2,15 @@
 
 namespace Topvisor\TinkoffSdk\Business;
 
+use stdClass;
+
 class BankStatement {
 
-	public string $accountNumber;
-	public float $saldoIn;
-	public float $income;
-	public float $outcome;
-	public float $saldoOut;
-	public ?array $operation = NULL;
+	/**
+	 * @var BankStatementOperation[]|null
+	 */
+	public ?array $operations = null;
+
+	public ?stdClass $balances = null;
 
 }

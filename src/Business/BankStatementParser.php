@@ -20,30 +20,16 @@ class BankStatementParser implements Parser {
     public function parse($raw) {
         $statement = new BankStatement();
 
-        $statement->accountNumber = $raw->accountNumber ?? NULL;
-        $statement->saldoIn = $raw->saldoIn ?? NULL;
-        $statement->income = $raw->income ?? NULL;
-        $statement->outcome = $raw->outcome ?? NULL;
-        $statement->saldoOut = $raw->saldoOut ?? NULL;
-        if (isset($raw->accountNumber))
-            $statement->accountNumber = $raw->accountNumber;
-        if (isset($raw->saldoIn))
-            $statement->saldoIn = $raw->saldoIn;
-        if (isset($raw->income))
-            $statement->income = $raw->income;
-        if (isset($raw->outcome))
-            $statement->outcome = $raw->outcome;
-        if (isset($raw->saldoOut))
-            $statement->saldoOut = $raw->saldoOut;
+        $statement->balances = $raw->balances ?? NULL;
 
-        if (isset($raw->operation)) {
-            if (!is_array($raw->operation))
+        if (isset($raw->operations)) {
+            if (!is_array($raw->operations))
                 throw new \Exception('wrong bank statement: ' . json_encode($raw));
 
-            $statement->operation = [];
+            $statement->operations = [];
 
-            foreach ($raw->operation as $rawOperation)
-                $statement->operation[] = BankStatementOperationParser::instance()->parse($rawOperation);
+            foreach ($raw->operations as $rawOperation)
+                $statement->operations[] = BankStatementOperationParser::instance()->parse($rawOperation);
         }
 
         return $statement;
