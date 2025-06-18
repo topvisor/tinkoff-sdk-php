@@ -31,53 +31,55 @@ class BankStatementOperationParser implements Parser {
 	private function parseRequired(BankStatementOperation $operation, \stdClass $raw): void {
 		if (!isset($raw->operationDate) || !isset($raw->operationId))
 			throw new \Exception('wrong bank statement operation: ' . json_encode($raw));
+		
+		$operation->payPurpose = null;
 
-        if (isset($raw->operationId))
-            $operation->operationId = $raw->operationId;
-		if (isset($raw->operationAmount))
-			$operation->operationAmount = $raw->operationAmount;
-		if (isset($raw->operationDate))
-			$operation->operationDate = new \DateTime($raw->operationDate);
-		if (isset($raw->drawDate))
-			$operation->drawDate = new \DateTime($raw->drawDate);
-		if (isset($raw->chargeDate))
-			$operation->chargeDate = new \DateTime($raw->chargeDate);
-		if (isset($raw->operationStatus))
-			$operation->operationStatus = $raw->operationStatus;
-		if (isset($raw->payPurpose))
-			$operation->payPurpose = $raw->payPurpose;
-		if (isset($raw->accountNumber))
-			$operation->accountNumber = $raw->accountNumber;
-		if (isset($raw->bic))
-			$operation->bic = $raw->bic;
-		if (isset($raw->typeOfOperation))
-			$operation->typeOfOperation = $raw->typeOfOperation;
-		if (isset($raw->category))
-			$operation->category = $raw->category;
-		if (isset($raw->trxnPostDate))
-			$operation->trxnPostDate = new \DateTime($raw->trxnPostDate);
-		if (isset($raw->authorizationDate))
-			$operation->authorizationDate = new \DateTime($raw->authorizationDate);
-		if (isset($raw->docDate))
-			$operation->docDate = new \DateTime($raw->docDate);
-		if (isset($raw->documentNumber))
-			$operation->documentNumber = $raw->documentNumber;
-		if (isset($raw->payVo))
-			$operation->payVo = $raw->payVo;
-		if (isset($raw->vo))
-			$operation->vo = $raw->vo;
-		if (isset($raw->priority))
-			$operation->priority = $raw->priority;
-		if (isset($raw->operationCurrencyDigitalCode))
-			$operation->operationCurrencyDigitalCode = $raw->operationCurrencyDigitalCode;
-		if (isset($raw->accountAmount))
-			$operation->accountAmount = $raw->accountAmount;
-		if (isset($raw->accountCurrencyDigitalCode))
-			$operation->accountCurrencyDigitalCode = $raw->accountCurrencyDigitalCode;
-		if (isset($raw->rubleAmount))
-			$operation->rubleAmount = $raw->rubleAmount;
-		if (isset($raw->description))
-			$operation->description = $raw->description;
+	        if (isset($raw->operationId))
+	            $operation->operationId = $raw->operationId;
+			if (isset($raw->operationAmount))
+				$operation->operationAmount = $raw->operationAmount;
+			if (isset($raw->operationDate))
+				$operation->operationDate = new \DateTime($raw->operationDate);
+			if (isset($raw->drawDate))
+				$operation->drawDate = new \DateTime($raw->drawDate);
+			if (isset($raw->chargeDate))
+				$operation->chargeDate = new \DateTime($raw->chargeDate);
+			if (isset($raw->operationStatus))
+				$operation->operationStatus = $raw->operationStatus;
+			if (isset($raw->payPurpose))
+				$operation->payPurpose = $raw->payPurpose;
+			if (isset($raw->accountNumber))
+				$operation->accountNumber = $raw->accountNumber;
+			if (isset($raw->bic))
+				$operation->bic = $raw->bic;
+			if (isset($raw->typeOfOperation))
+				$operation->typeOfOperation = $raw->typeOfOperation;
+			if (isset($raw->category))
+				$operation->category = $raw->category;
+			if (isset($raw->trxnPostDate))
+				$operation->trxnPostDate = new \DateTime($raw->trxnPostDate);
+			if (isset($raw->authorizationDate))
+				$operation->authorizationDate = new \DateTime($raw->authorizationDate);
+			if (isset($raw->docDate))
+				$operation->docDate = new \DateTime($raw->docDate);
+			if (isset($raw->documentNumber))
+				$operation->documentNumber = $raw->documentNumber;
+			if (isset($raw->payVo))
+				$operation->payVo = $raw->payVo;
+			if (isset($raw->vo))
+				$operation->vo = $raw->vo;
+			if (isset($raw->priority))
+				$operation->priority = $raw->priority;
+			if (isset($raw->operationCurrencyDigitalCode))
+				$operation->operationCurrencyDigitalCode = $raw->operationCurrencyDigitalCode;
+			if (isset($raw->accountAmount))
+				$operation->accountAmount = $raw->accountAmount;
+			if (isset($raw->accountCurrencyDigitalCode))
+				$operation->accountCurrencyDigitalCode = $raw->accountCurrencyDigitalCode;
+			if (isset($raw->rubleAmount))
+				$operation->rubleAmount = $raw->rubleAmount;
+			if (isset($raw->description))
+				$operation->description = $raw->description;
 	}
 
 	private function parsePayer(BankStatementOperation $operation, \stdClass $raw): void {
