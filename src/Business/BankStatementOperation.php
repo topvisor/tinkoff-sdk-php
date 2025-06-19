@@ -123,7 +123,7 @@ class BankStatementOperation {
     /**
      * Назначение платежа.
      */
-    public string $payPurpose;
+    public ?string $payPurpose;
 
 
     /**
