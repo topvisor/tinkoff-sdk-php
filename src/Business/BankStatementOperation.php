@@ -63,7 +63,7 @@ class BankStatementOperation {
     /**
      * Дата поступило.
      */
-    public DateTime $chargeDate;
+    public ?DateTime $chargeDate = NULL;
 
     /**
      * Дата создания документа.
