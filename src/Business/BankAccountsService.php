@@ -12,7 +12,7 @@ use Topvisor\TinkoffSdk\Id\Session;
 
 class BankAccountsService {
 
-	private const URL = Service::ENDPOINT_BUSINESS . '/api/v2/bank-accounts';
+	private const URL = Service::ENDPOINT_BUSINESS . '/api/v4/bank-accounts';
 
 	private const GET_URL = self::URL;
 	private const GET_METHOD = 'GET';
