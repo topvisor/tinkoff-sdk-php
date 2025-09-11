@@ -9,9 +9,9 @@ use Topvisor\TinkoffSdk\Core\Http\Response;
 
 class Service {
 
-	public const ENDPOINT_ID = 'https://id.tinkoff.ru';
-	public const ENDPOINT_BUSINESS = 'https://business.tinkoff.ru/openapi';
-	public const ENDPOINT_SECURED_BUSINESS = 'https://secured-openapi.business.tinkoff.ru';
+	public const ENDPOINT_ID = 'https://id.tbank.ru';
+	public const ENDPOINT_BUSINESS = 'https://business.tbank.ru/openapi';
+	public const ENDPOINT_SECURED_BUSINESS = 'https://secured-openapi.business.tbank.ru';
 
 	public const HEADER_NAME_REQUEST_ID = 'X-Request-Id';
 
