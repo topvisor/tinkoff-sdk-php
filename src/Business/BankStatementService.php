@@ -36,10 +36,10 @@ class BankStatementService {
 		];
 
 		if ($from)
-			$queryData['from'] = $from->format('Y-m-d\TH:i:s\Z');
+			$queryData['from'] = $from->format('Y-m-d\TH:i:sp');
 
 		if ($to) {
-			$queryData['to'] = $to->format('Y-m-d\TH:i:s\Z');
+			$queryData['to'] = $to->format('Y-m-d\TH:i:sp');
 		}
 
 		$url = self::GET_URL . '?' . http_build_query($queryData);
