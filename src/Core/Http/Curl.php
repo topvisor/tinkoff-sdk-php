@@ -57,7 +57,6 @@ class Curl implements Client {
 
 	public function close(): void {
 		if ($this->handle) {
-			curl_close($this->handle);
 			$this->handle = NULL;
 		}
 	}
