@@ -29,7 +29,7 @@ class BankStatementService {
 		unset($this->service);
 	}
 
-	public function get(string $accountNumber, ?\DateTime $from = null, ?\DateTime $to = null, ?Client $http = null): BankStatement {
+	public function get(string $accountNumber, ?\DateTime $from = null, ?\DateTime $to = null, ?Client $http = null, ?string $cursor = null): BankStatement {
 		$queryData = [
 			'accountNumber' => $accountNumber,
 			'limit' => 5000,
@@ -40,6 +40,10 @@ class BankStatementService {
 
 		if ($to) {
 			$queryData['to'] = $to->format('Y-m-d\TH:i:sp');
+		}
+
+		if ($cursor) {
+			$queryData['cursor'] = $cursor;
 		}
 
 		$url = self::GET_URL . '?' . http_build_query($queryData);
