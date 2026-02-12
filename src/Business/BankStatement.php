@@ -13,4 +13,6 @@ class BankStatement {
 
 	public ?stdClass $balances = null;
 
+	public ?string $nextCursor = null;
+
 }
