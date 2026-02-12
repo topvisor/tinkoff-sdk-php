@@ -32,7 +32,7 @@ class BankStatementParser implements Parser {
                 $statement->operations[] = BankStatementOperationParser::instance()->parse($rawOperation);
         }
 
-         $statement->nextCursor = $raw->nextCursor ?? NULL
+         $statement->nextCursor = $raw->nextCursor ?? NULL;
 
         return $statement;
     }
